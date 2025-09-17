@@ -7,6 +7,17 @@
  * para montar a lista de presença.
  */
 
+// Suprimir warnings de depreciação específicos
+process.removeAllListeners('warning');
+process.on('warning', (warning) => {
+    if (warning.name === 'DeprecationWarning' && warning.message.includes('punycode')) {
+        // Suprimir apenas o warning de punycode
+        return;
+    }
+    // Manter outros warnings
+    console.warn(warning.name, warning.message);
+});
+
 require('dotenv').config();
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
