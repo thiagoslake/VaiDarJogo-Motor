@@ -12,6 +12,7 @@ const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
 const { createClient } = require('@supabase/supabase-js');
 const moment = require('moment');
+const http = require('http');
 moment.locale('pt-br');
 
 class MotorCompletoRespostas {
@@ -583,8 +584,36 @@ class MotorCompletoRespostas {
     }
 }
 
+// Servidor HTTP para healthcheck do Railway
+function startHealthCheckServer() {
+    const server = http.createServer((req, res) => {
+        if (req.url === '/health') {
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ 
+                status: 'healthy', 
+                timestamp: new Date().toISOString(),
+                service: 'VaiDarJogo Motor'
+            }));
+        } else {
+            res.writeHead(404, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ error: 'Not found' }));
+        }
+    });
+
+    const port = process.env.PORT || 3000;
+    server.listen(port, () => {
+        console.log(`🏥 Health check server running on port ${port}`);
+        console.log(`🔗 Health check endpoint: http://localhost:${port}/health`);
+    });
+
+    return server;
+}
+
 // Executar motor
 async function main() {
+    // Iniciar servidor de healthcheck
+    startHealthCheckServer();
+    
     const motor = new MotorCompletoRespostas();
     await motor.iniciar();
 }
