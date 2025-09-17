@@ -1,0 +1,23 @@
+# Copie este arquivo para .env e configure suas credenciais
+
+# Configurações do WhatsApp Business API
+WHATSAPP_PHONE_NUMBER_ID=seu_phone_number_id_aqui
+WHATSAPP_ACCESS_TOKEN=seu_access_token_aqui
+
+# Configurações do Supabase (se necessário)
+SUPABASE_URL=sua_url_do_supabase
+SUPABASE_ANON_KEY=sua_chave_anonima_do_supabase
+
+# Configurações do bot (opcional)
+ADMIN_DEFAULT_PHONE=5513981645787
+ADMIN_DEFAULT_NAME=Administrador
+
+
+
+
+
+
+
+
+
+

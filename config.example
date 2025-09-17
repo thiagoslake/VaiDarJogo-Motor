@@ -1,0 +1,29 @@
+# Configurações do WhatsApp
+WHATSAPP_SESSION_PATH=./sessions
+WHATSAPP_HEADLESS=true
+WHATSAPP_TIMEOUT=60000
+
+# Configurações do banco de dados
+DB_PATH=./vaidarjogo.db
+DB_BACKUP_PATH=./backups
+
+# Configurações do bot
+ADMIN_DEFAULT_PHONE=5513981645787
+ADMIN_DEFAULT_NAME=Administrador
+BOT_NAME=Bot VaiDarJogo
+
+# Configurações de preços padrão
+DEFAULT_MONTHLY_PRICE=50.00
+DEFAULT_CASUAL_PRICE=25.00
+
+# Configurações de logging
+LOG_LEVEL=info
+LOG_FILE=./logs/bot.log
+
+# Configurações de segurança
+MAX_LOGIN_ATTEMPTS=3
+SESSION_TIMEOUT=3600000
+
+# Configurações de notificações
+ENABLE_NOTIFICATIONS=true
+NOTIFICATION_INTERVAL=300000
